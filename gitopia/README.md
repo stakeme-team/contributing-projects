@@ -6,7 +6,7 @@ Details: unlock leverage at scale for the Cosmos ecosystem</br>
 > Site: https://gitopia.com/ </br>
 > Discord: https://discord.gg/WujRarhaFV </br>
 > Github: https://gitopia.com/gitopia </br>
-> Twitter: hhttps://twitter.com/gitopiaDAO </br>
+> Twitter: https://twitter.com/gitopiaDAO </br>
 ## Table projects
 | Type      | Info      |
 |-----------|-----------|
