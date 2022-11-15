@@ -8,4 +8,4 @@ In this repository you will find information about the projects in which we cont
 ## Table projects
 | Project | URL                |
 |---------|--------------------|
-| Nibiru  | https://github.com |
+| Nibiru  | https://github.com/stakeme-team/contributing-projects/tree/master/nibiru |
