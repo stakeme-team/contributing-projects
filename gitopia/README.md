@@ -1,4 +1,4 @@
-# Nibiru
+# Gitopia
 
 Ecosystem: **cosmos** </br>
 Details: Gitopia is the next-generation Code Collaboration Platform fuelled by 
