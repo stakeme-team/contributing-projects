@@ -6,6 +6,7 @@ In this repository you will find information about the projects in which we cont
 
 > If you **notice** that the information is out of date, please contact us directly in the **online chat** on our website https://stakeme.pro
 ## Table projects
-| Project | URL                |
-|---------|--------------------|
-| Nibiru  | https://github.com/stakeme-team/contributing-projects/tree/master/nibiru |
+| Project | URL                                                                       |
+|---------|---------------------------------------------------------------------------|
+| Nibiru  | https://github.com/stakeme-team/contributing-projects/tree/master/nibiru  |
+| Gitopia | https://github.com/stakeme-team/contributing-projects/tree/master/gitopia |
