@@ -40,19 +40,4 @@ s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" $HOME/.nibid/con
 sudo systemctl restart nibid
 ```
 
-## Snapshot
-Update every 12 hours
-```sh
-sudo systemctl stop nibid
-cp $HOME/.nibid/data/priv_validator_state.json $HOME/.nibid/priv_validator_state.json.backup
-nibid tendermint unsafe-reset-all --home $HOME/.nibid --keep-addr-book
-rm -rf $HOME/.nibid/data
-
-SNAPSHOT_NAME=$(curl -s http://nibiru.stakeme.pro:8080/public/ | egrep -o ">nibiru_snapshot.*\.tar.lz4" | tr -d ">")
-curl -s http://nibiru.stakeme.pro:8080/public/$SNAPSHOT_NAME | lz4 -dc - | tar -xf - -C $HOME/.nibid
-
-mv $HOME/.nibid/priv_validator_state.json.backup $HOME/.nibid/data/priv_validator_state.json
-sudo systemctl restart nibid
-```
-
 **Automate** install node: https://t.me/stakeme_bot
