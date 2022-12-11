@@ -14,4 +14,45 @@ Details: unlock leverage at scale for the Cosmos ecosystem</br>
 | RPC       | http://nibiru.stakeme.pro:36657       |
 | Peer      | ae357e14309640ca33cde597b37f0a91e63a32bd@nibiru.stakeme.pro:36656      |
 
+## Download addrbook
+Update every 12 hours
+```sh
+ADDRBOOK_NAME=$(curl -s http://nibiru.stakeme.pro:8080/public/ | egrep -o ">nibiru_addrbook.*\.json" | tr -d ">")
+curl -s http://nibiru.stakeme.pro:8080/public/$ADDRBOOK_NAME > $HOME/.nibid/config/addrbook.json
+```
+
+## Statesync
+```sh
+sudo systemctl stop nibid
+nibid tendermint unsafe-reset-all --home $HOME/.nibid --keep-addr-book
+
+SNAP_RPC="http://nibiru.stakeme.pro:36657"
+LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 1000)); \
+TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
+
+echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
+
+sed -i -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
+s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; \
+s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
+s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" $HOME/.nibid/config/config.toml
+sudo systemctl restart nibid
+```
+
+## Snapshot
+Update every 12 hours
+```sh
+sudo systemctl stop nibid
+cp $HOME/.nibid/data/priv_validator_state.json $HOME/.nibid/priv_validator_state.json.backup
+nibid tendermint unsafe-reset-all --home $HOME/.nibid --keep-addr-book
+rm -rf $HOME/.nibid/data
+
+SNAPSHOT_NAME=$(curl -s http://nibiru.stakeme.pro:8080/public/ | egrep -o ">nibiru_snapshot.*\.tar.lz4" | tr -d ">")
+curl -s http://nibiru.stakeme.pro:8080/public/$SNAPSHOT_NAME | lz4 -dc - | tar -xf - -C $HOME/.nibid
+
+mv $HOME/.nibid/priv_validator_state.json.backup $HOME/.nibid/data/priv_validator_state.json
+sudo systemctl restart nibid
+```
+
 **Automate** install node: https://t.me/stakeme_bot
