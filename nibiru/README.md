@@ -15,7 +15,7 @@ Details: unlock leverage at scale for the Cosmos ecosystem</br>
 | Peer      | ae357e14309640ca33cde597b37f0a91e63a32bd@nibiru.stakeme.pro:36656      |
 
 ## Download addrbook
-Update every 12 hours
+Our system update every 12 hours
 ```sh
 ADDRBOOK_NAME=$(curl -s http://nibiru.stakeme.pro:8080/public/ | egrep -o ">nibiru_addrbook.*\.json" | tr -d ">")
 curl -s http://nibiru.stakeme.pro:8080/public/$ADDRBOOK_NAME > $HOME/.nibid/config/addrbook.json
