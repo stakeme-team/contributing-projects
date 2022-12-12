@@ -1,4 +1,4 @@
-![nibiru-contribute](https://user-images.githubusercontent.com/79249177/206919899-8bb4896d-7910-4b92-a850-d0db391525e2.png)
+![nibiru-contribute](https://user-images.githubusercontent.com/79249177/206979648-04a9a592-8c20-4851-b64e-0fbb5f0cda27.png)
 # Nibiru
 
 Ecosystem: **cosmos** </br>
