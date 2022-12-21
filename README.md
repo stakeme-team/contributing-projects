@@ -10,3 +10,4 @@ In this repository you will find information about the projects in which we cont
 |---------|---------------------------------------------------------------------------|
 | Nibiru  | https://github.com/stakeme-team/contributing-projects/tree/master/nibiru  |
 | Gitopia | https://github.com/stakeme-team/contributing-projects/tree/master/gitopia |
+| OKP4    | https://github.com/stakeme-team/contributing-projects/tree/master/okp4    |
