@@ -13,7 +13,7 @@ Details: unlock leverage at scale for the Cosmos ecosystem</br>
 |-----------|-----------|
 | Statesync | http://nibiru.stakeme.pro:36657 |
 | RPC       | http://nibiru.stakeme.pro:36657       |
-| Peer      | ae357e14309640ca33cde597b37f0a91e63a32bd@nibiru.stakeme.pro:36656      |
+| Peer      | 7f30e0e50fa219fad61b1378592285f6ee2b70dc@nibiru.stakeme.pro:36656      |
 
 ## Download addrbook
 Our system update every 12 hours
