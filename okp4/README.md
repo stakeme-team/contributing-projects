@@ -22,22 +22,16 @@ ADDRBOOK_NAME=$(curl -s http://okp4.stakeme.pro:8080/public/ | egrep -o ">okp4_a
 curl -s http://okp4.stakeme.pro:8080/public/$ADDRBOOK_NAME > $HOME/.okp4d/config/addrbook.json
 ```
 
-## Statesync
+## Snapshot
+Update every 6 hours
 ```sh
 sudo systemctl stop okp4d
+cp $HOME/.okp4d/data/priv_validator_state.json $HOME/.okp4d/priv_validator_state.json.backup
 okp4d tendermint unsafe-reset-all --home $HOME/.okp4d --keep-addr-book
-
-SNAP_RPC="http://okp4.stakeme.pro:29657"
-LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
-BLOCK_HEIGHT=$((LATEST_HEIGHT - 1000)); \
-TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
-
-echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
-
-sed -i -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
-s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; \
-s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
-s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" $HOME/.okp4d/config/config.toml
+rm -rf $HOME/.okp4d/data
+SNAPSHOT_NAME=$(curl -s http://okp4.stakeme.pro:8080/public/ | egrep -o ">okp4_snapshot.*\.tar.lz4" | tr -d ">")
+curl -s http://okp4.stakeme.pro:8080/public/$SNAPSHOT_NAME | lz4 -dc - | tar -xf - -C $HOME/.okp4d
+mv $HOME/.okp4d/priv_validator_state.json.backup $HOME/.okp4d/data/priv_validator_state.json
 sudo systemctl restart okp4d
 ```
 
