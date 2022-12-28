@@ -17,7 +17,7 @@ Details: The OKP4 project is one of is a domain-specific layer-1 dedicated to tr
 
 ## Install node (replace your YOUR_MONIKER with yours)
 ```sh
-https://raw.githubusercontent.com/stakeme-team/stakeme-connector/master/scripts/okp4-installer.sh | STAKEME_MONIKER=YOUR_MONIKER && bash
+curl -s https://raw.githubusercontent.com/stakeme-team/stakeme-connector/master/scripts/okp4-installer.sh | STAKEME_MONIKER=YOUR_MONIKER && bash
 ```
 
 ## Download addrbook
