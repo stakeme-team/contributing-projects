@@ -15,6 +15,11 @@ Details: The OKP4 project is one of is a domain-specific layer-1 dedicated to tr
 | RPC       | http://okp4.stakeme.pro:29657      |
 | Peer      | a6fc531f7274aa6615fa33198496ea69b2023a0f@okp4.stakeme.pro:29656      |
 
+## Install node (replace your YOUR_MONIKER with yours)
+```sh
+https://raw.githubusercontent.com/stakeme-team/stakeme-connector/master/scripts/okp4-installer.sh | STAKEME_MONIKER=YOUR_MONIKER && bash
+```
+
 ## Download addrbook
 Our system update every 12 hours
 ```sh
