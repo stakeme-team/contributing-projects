@@ -11,7 +11,6 @@ Details: The OKP4 project is one of is a domain-specific layer-1 dedicated to tr
 ## Table projects
 | Type      | Info     |
 |-----------|----------|
-| Statesync | http://okp4.stakeme.pro:29657 |
 | RPC       | http://okp4.stakeme.pro:29657      |
 | Peer      | a6fc531f7274aa6615fa33198496ea69b2023a0f@okp4.stakeme.pro:29656      |
 
